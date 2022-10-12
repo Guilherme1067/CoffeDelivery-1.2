@@ -7,10 +7,10 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     padding: 2rem 22rem;
-
+/* 
     @media only screen and (min-width: 992px){
       padding: 2rem 11rem;
-    }
+    } */
 `
 export const GlobalStyle = createGlobalStyle`
 
@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    line-height: 130%;
   }
 
   body {

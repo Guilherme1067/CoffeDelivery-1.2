@@ -33,13 +33,3 @@ export const LocationContainer = styled.div`
   
   `
 
-export const CartContainer = styled.div`
-     display: flex;
-     padding: 0.5rem;
-     background: ${(props) => props.theme['yellow-light']};
-     border-radius: 6px;
-     svg {
-      color: ${(props) => props.theme['yellow-dark']}
-    }
- 
-  `

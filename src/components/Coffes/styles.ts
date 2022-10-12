@@ -7,14 +7,6 @@ export const CardContainer = styled.div`
   gap: 32px;
   margin-top: 54px;
 
-  /* footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items:center;
-    padding-bottom: 20px;
-  } */
-
 `
 export const Card = styled.div`
   max-width: 262px;
@@ -30,6 +22,11 @@ export const Card = styled.div`
 
   position: relative;
   border-radius: 6px 36px;
+
+  div:nth-child(2) div{
+      flex-direction: row;
+      gap: 12px;
+   }
 
   div {
     display: flex;
@@ -58,12 +55,14 @@ footer {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items:center;
+    align-items: flex-end;
     padding-bottom: 20px;
     
   div {
     display: flex;
     flex-direction: row;
+    align-items: center;
+
   }
 }
 `
@@ -89,10 +88,19 @@ export const Description = styled.p`
 
 export const CartDiv = styled.div `
   background: ${(props) => props.theme['purple-dark']};
+  width: 38px;
+  height: 38px;
   padding: 10px 8px;
   border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s;
   svg {
     color: white;
+  }
+
+  &:hover {
+    background: ${(props) => props.theme['purple']};
+
   }
 `
 
@@ -112,17 +120,8 @@ export const Price = styled.p `
 `
 
 
-export const AmountContainer = styled.div `
-  background: ${(props) => props.theme['base-button']};
-  display:flex;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 6px;
-  gap: 5px;
-  padding: 8px 12px;
+export const CoffeTitle = styled.div`
+  display: flex;
+  flex-direction: row!important;;
 
-  svg {
-    color: ${(props) => props.theme['purple']};
-    cursor: pointer;
-  }
 `

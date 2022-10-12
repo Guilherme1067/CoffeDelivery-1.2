@@ -1,7 +1,8 @@
 import { MapPin, ShoppingCart } from "phosphor-react"
 import { Logo } from "../../assets/Logo"
 import { Container } from "../../styles/global"
-import { CartContainer, HeaderNavigation, LeftSideContainer, LocationContainer } from "./styles"
+import { Cart } from "../Cart/Cart"
+import { HeaderNavigation, LeftSideContainer, LocationContainer } from "./styles"
 
 export const Header = () => {
   return (
@@ -13,10 +14,7 @@ export const Header = () => {
             <MapPin size={22} weight="fill" />
             <span>Porto Alegre, RS</span>
           </LocationContainer>
-
-          <CartContainer>
-            <ShoppingCart size={22} weight="fill" />
-          </CartContainer>
+            <Cart/>
         </LeftSideContainer>
 
       </HeaderNavigation>
