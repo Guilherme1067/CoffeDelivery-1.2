@@ -86,7 +86,7 @@ export const Description = styled.p`
   margin-top: 8px;
 `
 
-export const CartDiv = styled.div `
+export const CartDiv = styled.div`
   background: ${(props) => props.theme['purple-dark']};
   width: 38px;
   height: 38px;
@@ -104,7 +104,7 @@ export const CartDiv = styled.div `
   }
 `
 
-export const Price = styled.p `
+export const Price = styled.p`
  display: flex;
  align-items: center;
  gap: 5px;
@@ -121,7 +121,5 @@ export const Price = styled.p `
 
 
 export const CoffeTitle = styled.div`
-  display: flex;
-  flex-direction: row!important;;
-
+  margin-bottom: 16px;
 `

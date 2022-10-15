@@ -1,14 +1,15 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { useContext } from 'react'
 import CupImg from '../../assets/CupImg.svg'
 import { Coffes } from '../../components/Coffes'
+import { CartContext } from '../../contexts/CartContext'
 import { Container } from '../../styles/global'
 import { DescriptionImgContainer, HomeContainer, LeftSideContent, MainContent } from './styles'
-export const Home = () => {
 
+export const Home = () => {
   return (
     <Container>
       <HomeContainer>
-
         <LeftSideContent>
           <h1>Encontre o café perfeito<br />para qualquer hora do dia</h1>
           <span>Com o Coffee Delivery você recebe seu café onde estiver, a <br />qualquer hora</span>
@@ -31,12 +32,10 @@ export const Home = () => {
             </li>
           </ul>
         </LeftSideContent>
-        <img src={CupImg} alt=""  />
+        <img src={CupImg} alt="" />
       </HomeContainer>
-
       <MainContent>
         <h1>Nossos Cafés</h1>
-
         <Coffes />
       </MainContent>
     </Container>

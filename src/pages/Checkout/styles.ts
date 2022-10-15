@@ -6,7 +6,7 @@ export const CheckoutContainer = styled.div`
 `;
 
 
-export const DeliveryAddress = styled.div `
+export const DeliveryAddress = styled.div`
   display: flex;
   gap: 8px;
 `
@@ -201,8 +201,9 @@ export const PaymentMethods = styled.p`
     cursor: pointer;
     border: none;
 
+
     &:hover {
-      background: ${(props) => props.theme["purple-light"]};
+      background: ${(props) => props.theme["base-hover"]};
     }
 
     p {
@@ -212,7 +213,6 @@ export const PaymentMethods = styled.p`
     }
   }
 `;
-
 export const ControlItemsContainer = styled.div`
   display: flex;
   gap: 16px;
