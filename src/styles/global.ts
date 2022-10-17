@@ -22,6 +22,8 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 130%;
   }
 
+
+
   body {
     background: ${(props) => props.theme['background']};
     color: ${(props) => props.theme['base-text']};

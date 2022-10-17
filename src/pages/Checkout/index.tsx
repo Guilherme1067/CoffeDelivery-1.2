@@ -6,7 +6,9 @@ import {
   Money,
   Trash,
 } from "phosphor-react";
-import { useContext } from "react";
+import { useForm } from "react-hook-form"
+
+import { useContext, useState } from "react";
 import { AddToCartComponent } from "../../components/AddToCartComponent";
 import { CartContext } from "../../contexts/CartContext";
 import { formatPrice } from "../../helpers/formatPrice";
@@ -28,9 +30,9 @@ import {
   ItemsContainer,
   LeftSideContent,
   MainDiv,
-  PaymantHeader,
-  PaymantSubTitle,
-  PaymantTitle,
+  PaymentHeader,
+  PaymentSubTitle,
+  PaymentTitle,
   PaymentContainer,
   PaymentMethods,
   Price,
@@ -39,12 +41,21 @@ import {
   TotalItems,
   TotalPrice,
 } from "./styles";
+import { Navigate, useNavigate, useNavigation } from "react-router-dom";
 
 export const CheckOut = () => {
   const { cartItems, deleteItemFromCart, totalItemsPrice } = useContext(CartContext)
+  const navigate = useNavigate();
+  const { register, handleSubmit, watch } = useForm();
+
+  const hadleUserAddress = (data: any) => {
+    navigate("/success")
+  }
+  const fieldsValues = watch(["cep", "street", "number", "complement", "neighborhood", "city", "uf"])
+  const isButtonAvailable = fieldsValues.some(value => !value);
   return (
     <Container>
-      <CheckoutContainer>
+      <CheckoutContainer onSubmit={handleSubmit(hadleUserAddress)}>
         <LeftSideContent>
           <FormContainer>
             <FormHeader>Complete seu pedido</FormHeader>
@@ -61,19 +72,19 @@ export const CheckOut = () => {
               </DeliveryAddress>
               <AddressInputs>
                 <div>
-                  <input placeholder="CEP" />
+                  <input type="number" placeholder="CEP"  {...register("cep", { valueAsNumber: true })} />
                 </div>
                 <div>
-                  <input placeholder="Rua" />
+                  <input placeholder="Rua" {...register("street")} />
                 </div>
                 <div>
-                  <input placeholder="Número" />
-                  <input placeholder="Complemento" />
+                  <input placeholder="Número" {...register("number", { valueAsNumber: true })} />
+                  <input placeholder="Complemento" {...register("complement")} />
                 </div>
                 <div>
-                  <input placeholder="Bairro" />
-                  <input placeholder="Cidade" />
-                  <input placeholder="UF" />
+                  <input placeholder="Bairro" {...register("neighborhood")} />
+                  <input placeholder="Cidade" {...register("city")} />
+                  <input placeholder="UF" {...register("uf")} />
                 </div>
               </AddressInputs>
             </AddresContainer>
@@ -81,27 +92,36 @@ export const CheckOut = () => {
 
           {/* componente pagamento */}
           <PaymentContainer>
-            <PaymantHeader>
+            <PaymentHeader>
               <CurrencyDollar size={20} weight="regular" />
               <div>
-                <PaymantTitle>Pagamento</PaymantTitle>
-                <PaymantSubTitle>
+                <PaymentTitle>Pagamento</PaymentTitle>
+                <PaymentSubTitle>
                   O pagamento é feito na entrega. Escolha a forma que deseja
                   pagar
-                </PaymantSubTitle>
+                </PaymentSubTitle>
               </div>
-            </PaymantHeader>
+            </PaymentHeader>
 
             <PaymentMethods>
-              <button>
-                <CreditCard size={16} /> <p>Cartão de Crédito</p>
-              </button>
-              <button>
-                <Bank size={16} /> <p>Cartão de débito</p>
-              </button>
-              <button>
-                <Money size={16} /> <p>Dinheiro</p>
-              </button>
+              <div>
+                <input id="credit" value="credit" name="paymentMethod" type="radio" />
+                <label htmlFor="credit">
+                  <CreditCard size={16} /> <p>Cartão de Crédito</p>
+                </label>
+              </div>
+              <div>
+                <input id="debit" type="radio" name="paymentMethod" />
+                <label htmlFor="debit">
+                  <Bank size={16} /> <p>Cartão de débito</p>
+                </label>
+              </div>
+              <div>
+                <input id="cash" type="radio" name="paymentMethod" />
+                <label htmlFor="cash">
+                  <Money size={16} /> <p>Dinheiro</p>
+                </label>
+              </div>
             </PaymentMethods>
           </PaymentContainer>
         </LeftSideContent>
@@ -140,7 +160,8 @@ export const CheckOut = () => {
               </div>
             </BottomItems>
 
-            <Button>Confirmar Pedido</Button>
+            <Button type="submit" disabled={isButtonAvailable}>Confirmar Pedido</Button>
+
           </ItemsContainer>
         </ProductContainer>
       </CheckoutContainer>

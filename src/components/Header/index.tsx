@@ -21,7 +21,7 @@ export const Header = () => {
             <MapPin size={22} weight="fill" />
             {location.city && location.state ? (
               <span>{`${location.city}, ${location.state}`}</span>
-            ) : <span>"Belo Horizonte,MG"</span>}
+            ) : <span>Belo Horizonte,MG</span>}
           </LocationContainer>
           <Link to="/checkout">
             <Cart />

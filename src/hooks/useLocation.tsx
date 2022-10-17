@@ -21,17 +21,16 @@ export const useLocation = () => {
 
   }
 
-
   const geoError = () => {
     alert("Geocoder failed.")
   }
-
 
   const codeLatLng = async (lat: any, lng: any) => {
     Geocode.setRegion("BR")
     Geocode.setLanguage("pt-BR")
     const response = await Geocode.fromLatLng(lat, lng)
     const address = response.results[9].formatted_address
+    console.log(address)
     const [city, rest] = address.split("-")
     const [state] = rest.split(",")
     const location = {

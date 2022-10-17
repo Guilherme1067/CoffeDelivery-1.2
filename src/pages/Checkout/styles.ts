@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CheckoutContainer = styled.div`
+export const CheckoutContainer = styled.form`
   display: flex;
   gap: 32px;
 `;
@@ -31,12 +31,6 @@ export const AddressInputs = styled.div`
       width: 200px;
     }
 
-    &:nth-child(3) input:nth-child(2)::-webkit-input-placeholder::after {
-      content: 'sadas';
-      display: block;
-      color:green;
-    }
-
     &:nth-child(4) input:nth-child(1) {
       flex: none;
       width: 200px;
@@ -45,7 +39,6 @@ export const AddressInputs = styled.div`
     &:last-child input:nth-child(3) {
       flex: 0;
       width: 60px;
-      color: red;
     }
   }
 
@@ -165,7 +158,7 @@ export const PaymentContainer = styled.div`
   }
 `;
 
-export const PaymantHeader = styled.div`
+export const PaymentHeader = styled.div`
   display: flex;
   gap: 12px;
 
@@ -175,11 +168,11 @@ export const PaymantHeader = styled.div`
     gap: 2px;
   }
 `;
-export const PaymantTitle = styled.p`
+export const PaymentTitle = styled.p`
   color: ${(props) => props.theme["base-subtitle"]};
 `;
 
-export const PaymantSubTitle = styled.p`
+export const PaymentSubTitle = styled.p`
   font-size: 14px;
   color: ${(props) => props.theme["base-text"]};
 `;
@@ -188,7 +181,7 @@ export const PaymentMethods = styled.p`
   display: flex;
   gap: 12px;
 
-  button {
+  div {
     display: flex;
     gap: 12px;
     width: 178px;
@@ -201,6 +194,21 @@ export const PaymentMethods = styled.p`
     cursor: pointer;
     border: none;
 
+    input:checked + label div {
+      background: red;
+    }
+   input {
+      visibility: hidden;
+      display: none;
+      appearance: none;
+
+   
+    }
+    label {
+      display: flex;
+    gap: 12px;
+
+    }
 
     &:hover {
       background: ${(props) => props.theme["base-hover"]};
@@ -284,6 +292,10 @@ export const Button = styled.button`
   transition: all 0.4s;
   &:hover {
   background: ${(props) => props.theme["yellow-dark"]};
+  }
 
+  &:disabled {
+   background: ${(props) => props.theme["yellow"]};
+   cursor: not-allowed;
   }
 `;
